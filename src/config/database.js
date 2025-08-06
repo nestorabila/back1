@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const sequelize= new Sequelize(process.env.DB, process.env.DB_USER, process.env.DB_PSW, {
-    host: process.env.HOST,
+    host: process.env.DB_HOST,
     dialect: process.env.DB_TYPE,
     pool: {
         max: 5,
