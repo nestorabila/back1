@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 app.use(cors({
-  origin: ['https://luciwebv2.onrender.com', 'http://localhost:4200'], 
+  origin: ['https://luciwebv2.onrender.com', 'http://localhost:4200','capacitor://localhost'], 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
