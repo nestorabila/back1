@@ -2,9 +2,15 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config()
 
+app.use(cors({
+  origin: ['https://luciwebv2.onrender.com', 'http://localhost:4200'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
 //cualquier api que hagas al servidor siempre va pasar pruimero por este archivo app.js de aqui se rediriguen a las rutas
 app.get('/', (req, res) => {
     res.send('API de luci funcionando correctamente');
