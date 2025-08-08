@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 const allowedOrigins = [
-  'https://luciwebv2.onrender.com',
+  'https://creacioneslucianita.onrender.com',
   'http://localhost:4200',
   'capacitor://localhost',
   'https://localhost'
