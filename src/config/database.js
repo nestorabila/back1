@@ -2,6 +2,9 @@ const { Sequelize, DataTypes } = require('sequelize')
 const initModels = require('../modelos/init-models')
 const dotenv = require('dotenv');
 dotenv.config();
+console.log("DB:", process.env.DB);
+console.log("DB_USER:", process.env.DB_USER);
+console.log("DB_HOST:", process.env.DB_HOST);
 
 const sequelize= new Sequelize(process.env.DB, process.env.DB_USER, process.env.DB_PSW, {
     host: process.env.DB_HOST,
