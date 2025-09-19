@@ -15,10 +15,25 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  
+  origin: function(origin, callback) {
+    console.log(`🌐 Solicitud recibida desde origen: ${origin || '[sin origen]'}`);
+
+    if (!origin) {
+      console.log('✅ Se permitió acceso sin origen (ej. curl o apps nativas)');
+      return callback(null, true);
+    }
+
+    if (allowedOrigins.includes(origin)) {
+      console.log(`✅ Origen permitido: ${origin}`);
+      return callback(null, true);
+    } else {
+      console.warn(`❌ Origen NO permitido: ${origin}`);
+      return callback(new Error('CORS Error: Origen no permitido - ' + origin), false);
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
-}));
+}))
 
 
 //cualquier api que hagas al servidor siempre va pasar pruimero por este archivo app.js de aqui se rediriguen a las rutas
