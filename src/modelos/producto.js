@@ -15,14 +15,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(80),
       allowNull: true
     },
-     fecha: {
-      type: DataTypes.DATEONLY,
-      allowNull: false
-    },
-    hora: {
-      type: DataTypes.TIME,
-      allowNull: false
-    },
     idcategoria: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -30,6 +22,16 @@ module.exports = function(sequelize, DataTypes) {
         model: 'categoria',
         key: 'idcategoria'
       }
+    },
+    fecha: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_DATE')
+    },
+    hora: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      defaultValue: "CURRENT_TIME"
     }
   }, {
     sequelize,

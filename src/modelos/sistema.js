@@ -6,29 +6,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
+    direccion: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
     nit: {
       type: DataTypes.STRING(40),
       allowNull: false
     },
-
-     telefono: {
+    telefono: {
       type: DataTypes.STRING(40),
       allowNull: false
     },
-
-     direccion: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    long: {
-      type: DataTypes.DECIMAL(10, 8),
-      allowNull: true
-    },
-    lat: {
-      type: DataTypes.DECIMAL(11, 8), 
-      allowNull: true
-    },
-
     idciudad: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -37,6 +26,14 @@ module.exports = function(sequelize, DataTypes) {
         key: 'idciudad'
       },
       unique: "sistema_idciudad_key"
+    },
+    long: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
+    },
+    lat: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
     }
   }, {
     sequelize,

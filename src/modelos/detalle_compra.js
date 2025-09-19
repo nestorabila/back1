@@ -8,11 +8,11 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     precio_u: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DOUBLE,
       allowNull: false
     },
-     precio_t: {
-      type: DataTypes.FLOAT,
+    precio_t: {
+      type: DataTypes.DOUBLE,
       allowNull: false
     },
     cantidad_u: {

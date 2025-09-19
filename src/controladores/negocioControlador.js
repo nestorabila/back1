@@ -15,7 +15,7 @@ const listarNegocio = async (req, res) =>{
         
     }
 }
-const listarReporteLibreria = async (req, res) => {
+const listarReporteNegocio = async (req, res) => {
   try {
     const { idciudad, razon_social, desde, hasta } = req.query;
 
@@ -111,4 +111,4 @@ const eliminarNegocio = async (req, res) => {
         res.status(500).json({ mensaje: 'Error al eliminar librería' });
     }
 }
-module.exports = {listarNegocioID, listarNegocio, registrarNegocio, modificarNegocio, eliminarNegocio, listarReporteLibreria}
+module.exports = {listarNegocioID, listarNegocio, registrarNegocio, modificarNegocio, eliminarNegocio, listarReporteNegocio}

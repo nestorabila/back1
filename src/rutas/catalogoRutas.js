@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const upload = require('../uploads/uploadConfig');
 const {verificarToken} = require('../middleware/token');
-const {cambiarEstadoCatalogo, listarCatalogoDTO, GenerarReporteCatalogo, filtrarPorDestacado, filtrarCategoria, listarCatalogo,subirImagen, registrarCatalogo, modificarCatalogo, buscarCatalogo} = require('../controladores/catalogoControlador')
+const {cambiarEstadoCatalogo, GenerarReporteCatalogo, filtrarPorDestacado, filtrarCategoria, listarCatalogo,subirImagen, registrarCatalogo, modificarCatalogo, buscarCatalogo} = require('../controladores/catalogoControlador')
 router.get('/listarCatalogo', listarCatalogo);
 router.post('/registrarCatalogo',verificarToken, registrarCatalogo);
 router.post('/subirImagen', verificarToken, upload.single('imagen'), subirImagen);

@@ -27,10 +27,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(20),
       allowNull: true
     },
-    nit: {
-      type: DataTypes.STRING(40),
-      allowNull: true
-    },
     estado: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -52,6 +48,10 @@ module.exports = function(sequelize, DataTypes) {
         model: 'ciudad',
         key: 'idciudad'
       }
+    },
+    nit: {
+      type: DataTypes.STRING(40),
+      allowNull: true
     }
   }, {
     sequelize,
