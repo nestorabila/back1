@@ -4,11 +4,12 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// Log variables para verificar
 console.log("DB:", process.env.DB);
 console.log("DB_USER:", process.env.DB_USER);
 console.log("DB_HOST:", process.env.DB_HOST);
 
-// Conexión más estable usando la URL completa con sslmode=require
+// Conexión a Neon
 const sequelize = new Sequelize(
   `postgres://${process.env.DB_USER}:${process.env.DB_PSW}@${process.env.DB_HOST}:5432/${process.env.DB}?sslmode=require`,
   {
@@ -17,20 +18,21 @@ const sequelize = new Sequelize(
       max: 5,
       min: 0,
       acquire: 30000,
-      idle: 10000,
+      idle: 10000
     },
-    logging: false, // poner true si quieres ver queries
+    logging: (msg) => console.log("🟢 SQL:", msg) // Muestra queries si quieres
   }
 );
 
-// Verificar conexión
-sequelize.authenticate()
-  .then(() => {
-    console.log('✅ Conectado a la base de datos correctamente!');
-  })
-  .catch((err) => {
-    console.error('❌ Error de conexión a la base de datos:', err);
-  });
+// Test de conexión
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('✅ Conexión a Neon establecida correctamente!');
+  } catch (err) {
+    console.error('❌ Error al conectar con Neon:', err);
+  }
+})();
 
 // Inicializar modelos
 const db = initModels(sequelize);
