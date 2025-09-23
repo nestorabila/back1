@@ -13,12 +13,12 @@ const sequelize= new Sequelize(process.env.DB, process.env.DB_USER, process.env.
         acquire: 30000,
         idle: 10000
     }, logging: false,
-    // dialectOptions: {
-    //     ssl: {  
-    //         require: true,
-    //         rejectUnauthorized: false,
-    //     }
-    // },
+    dialectOptions: {
+        ssl: {  
+            require: true,
+            rejectUnauthorized: false,
+        }
+    },
 });
 sequelize.authenticate().then(() => {
     console.log('Conectado a la base de datos!');
