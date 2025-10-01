@@ -10,6 +10,7 @@ const allowedOrigins = [
   'https://creacioneslucianitav1-2.onrender.com',
   'http://localhost:4200',
   'http://localhost:4300',
+  'http://192.168.0.64:4300',
   'capacitor://localhost',
   'https://localhost'
 ];
