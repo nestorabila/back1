@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     fotografia: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     fecha: {
       type: DataTypes.DATEONLY,

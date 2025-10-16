@@ -51,8 +51,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 1
-    },
-   
+    }
   }, {
     sequelize,
     tableName: 'factura',

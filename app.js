@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 const allowedOrigins = [
-  'https://creacioneslucianitav1-3.onrender.com',
+  'https://creacioneslucianitav1-4.onrender.com',
   'http://localhost:4200',
   'http://localhost:4300',
   'http://192.168.0.64:4300',
@@ -17,15 +17,14 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function(origin, callback) {
-    console.log(`🌐 Solicitud recibida desde origen: ${origin || '[sin origen]'}`);
-
+    
     if (!origin) {
-      console.log('✅ Se permitió acceso sin origen (ej. curl o apps nativas)');
+   
       return callback(null, true);
     }
 
     if (allowedOrigins.includes(origin)) {
-      console.log(`✅ Origen permitido: ${origin}`);
+   
       return callback(null, true);
     } else {
       console.warn(`❌ Origen NO permitido: ${origin}`);

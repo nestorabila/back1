@@ -5,12 +5,13 @@ const {verificarToken} = require('../middleware/token');
 const {listarPersonas, 
     listarPersonasFiltradas,
     registrarPersona,
+    listarGenero,
     modificarPersona,
     buscarPersonas, GenerarReportePersona,
     cambiarEstadoPersona,
     GuardarFotografia, verDetallesPersona
 } = require('../controladores/personaControlador')
-
+router.get('/listarGenero', listarGenero)
 router.get('/listarPersonas',verificarToken, listarPersonas)
 router.get('/listarReportePersona',verificarToken,GenerarReportePersona)
 router.get('/listarPersonasFiltradas',verificarToken, listarPersonasFiltradas)

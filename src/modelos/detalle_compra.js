@@ -37,7 +37,8 @@ module.exports = function(sequelize, DataTypes) {
       references: {
         model: 'producto',
         key: 'idproducto'
-      }
+      },
+      unique: "detalle_compra_idproducto_key"
     },
     idempaque: {
       type: DataTypes.INTEGER,
@@ -61,6 +62,13 @@ module.exports = function(sequelize, DataTypes) {
     schema: 'public',
     timestamps: false,
     indexes: [
+      {
+        name: "detalle_compra_idproducto_key",
+        unique: true,
+        fields: [
+          { name: "idproducto" },
+        ]
+      },
       {
         name: "detalle_compra_pkey",
         unique: true,

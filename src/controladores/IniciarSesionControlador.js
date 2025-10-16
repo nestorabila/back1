@@ -13,49 +13,59 @@ const loguear = async (req, res) => {
   }
 
   try {
-    // Buscar la credencial con la persona y rol relacionados
     const credencial = await db.credencial.findOne({
       where: { usuario },
       include: [
         {
           model: db.persona,
           as: 'persona',
-          include: [{ model: db.rol, as: 'rol' }]
-        }
-      ]
+          include: [
+            {
+              model: db.rol, as: "rol",       // sigue incluyendo el rol
+              through: { attributes: [] }, // esto hace el join por la tabla intermedia
+            },
+          ],
+        },
+      ],
     });
 
     if (!credencial) {
       return res.status(401).json({ error: 'Usuario no encontrado' });
     }
 
-    // Comparar la contraseña ingresada con el hash almacenado
+    // Verificar contraseña
     const contrasenaValida = await bcrypt.compare(contrasena, credencial.contrasena);
     if (!contrasenaValida) {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
     }
 
+    // Generar token
     const token = jwt.sign(
       { idpersona: credencial.idpersona, usuario: credencial.usuario },
       SECRET_KEY,
       { expiresIn: '30m' }
     );
 
-    // Extraer nombre de persona y nombre del rol
-    const nombreCompleto = credencial.persona.nombre + " " + credencial.persona.ap_paterno;
-    const correo = credencial.persona.correo;
-    const estado = credencial.persona.estado;
-    const idpersona = credencial.persona.idpersona;
-    const nombreRol = credencial.persona.rol.nombre;
+    // Datos de persona
+    const p = credencial.persona;
+    const nombreCompleto = `${p.nombre} ${p.ap_paterno}`;
+    const correo = p.correo;
+    const estado = p.estado;
+    const idpersona = p.idpersona;
+
+    // 🔹 Ahora persona puede tener varios roles
+   const roles = p.rol || [];
+    const nombresRoles = roles.map(r => r.nombre); // array de nombres
+    const nombreRol = nombresRoles.join(', '); // ej: "Administrador, Producción"
 
     res.json({
       usuario: credencial.usuario,
       token,
-      correo: correo,
-      nombreCompleto: nombreCompleto,
-      rol: nombreRol,
-      estado: estado,
-      idpersona: idpersona
+      correo,
+      nombreCompleto,
+      rol: nombreRol, // 🔹 sigue devolviendo "rol", pero puede contener varios
+      estado,
+      idpersona
     });
 
   } catch (err) {
@@ -63,5 +73,6 @@ const loguear = async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor' });
   }
 };
+
 
 module.exports = { loguear };

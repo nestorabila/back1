@@ -47,21 +47,17 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(200),
       allowNull: true
     },
-    genero: {
-      type: DataTypes.CHAR(1),
-      allowNull: false
-    },
     estado: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 1
     },
-    idrol: {
+    idgenero: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'rol',
-        key: 'idrol'
+        model: 'genero',
+        key: 'idgenero'
       }
     }
   }, {
