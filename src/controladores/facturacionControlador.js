@@ -377,7 +377,8 @@ const ySimulado = yLiteral + 25; // ajusta según espacio disponible
 const fechaActual = new Date();
 
 // Primer párrafo: mensaje legal / advertencia
-const mensajeLegal = `Esta factura contribuye al desarrollo económico del país y su uso ilícito será sancionado penalmente de acuerdo a la Ley Nº 435. 
+const mensajeLegal = `Esta factura contribuye al desarrollo económico del país y su uso ilícito será sancionado 
+penalmente de acuerdo a la Ley Nº 435. 
 Está prohibida la reproducción, distribución o comercialización de esta factura sin autorización. 
 Cualquier intento de alterar, copiar o distribuir esta factura constituirá un delito según la normativa vigente.`;
 

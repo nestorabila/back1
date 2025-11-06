@@ -55,7 +55,11 @@ const GenerarReportePersona = async (req, res) => {
 
     // Filtro por rol (idrol)
     if (rol) {
-      filtros.include[0].where = { idrol: rol }; // 👈 filtra roles en la tabla intermedia
+      // buscar el include que corresponde al modelo 'rol' (por seguridad no depender del índice)
+      const rolInclude = filtros.include.find(inc => inc.model === db.rol || inc.as === 'rol');
+      if (rolInclude) {
+        rolInclude.where = { idrol: rol };
+      }
     }
 
     // Filtro por nombre o apellidos

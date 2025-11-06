@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 const allowedOrigins = [
-  'https://creacioneslucianitav1-4.onrender.com',
+  'https://creacioneslucianitav1-5.onrender.com',
   'http://localhost:4200',
   'http://localhost:4300',
   'http://192.168.0.64:4300',
