@@ -4,7 +4,7 @@ const {verificarToken} = require('../middleware/token');
 
 const {registrarLibreria, reenviarCodigoLibreria, cambiarEstadoLibreria, modificarLibreria,listarReporteLibreria, listarLibreriaID, listarLibreria, eliminarLibreria, } = require('../controladores/negocioControlador')
 router.get('/listarNegocio/:idpersona', verificarToken, listarLibreriaID);
-router.get('/listarNegocioCompleto', verificarToken, listarLibreria);
+router.get('/listarNegocioCompleto', listarLibreria);
 router.get('/listarReporteLibreria',verificarToken,listarReporteLibreria)
 router.post('/registrarNegocio', registrarLibreria);
 router.put('/reenviarCodigoLibreria/:id', reenviarCodigoLibreria);

@@ -81,7 +81,7 @@ const listarLibreriaID = async (req, res) => {
 // Configurar API Key de Brevo
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications['api-key'];
-apiKey.apiKey = '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'; // <-- pega aquí tu API Key
+apiKey.apiKey = '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'; // <-- pega aquí tu API Key
 
 const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
